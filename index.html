@@ -17,7 +17,7 @@
       --blue-mid: #1d3557;
       --blue-soft: #2a486c;
       --gold-line: #c5a059;
-      --gold-dark: #916e2c;
+      --gold-dark: #8c6a28;
     }
 
     * {
@@ -37,34 +37,35 @@
       padding: 16px 8px;
     }
 
-    /* Ana Kutu */
+    /* Ana Kart Çerçevesi */
     .card-wrapper {
       position: relative;
       width: 100%;
       max-width: 460px;
       min-height: 740px;
       border-radius: 26px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
       overflow: hidden;
       background: #faf8f5;
     }
 
-    /* Dosya Yolu Sorununu Kökten Çözen Gömülü Arka Plan Katmanı */
-    .bg-layer {
+    /* Çiçekli Arka Plan Katmanı */
+    .bg-image {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      object-fit: fill;
       z-index: 1;
       pointer-events: none;
     }
 
-    /* İçerik Katmanı: Altın Çerçevenin Tam İçine Oturur */
+    /* Çiçeklerin Üstünü Kapatmayan İçerik Alanı */
     .card-content {
       position: relative;
       z-index: 2;
-      padding: 76px 44px 56px 44px;
+      padding: 74px 44px 52px 44px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -157,7 +158,7 @@
       font-size: 0.55rem;
     }
 
-    /* Geri Sayım */
+    /* Geri Sayım Kutucukları */
     .countdown-title {
       font-family: 'Cinzel', serif;
       font-size: 0.68rem;
@@ -175,11 +176,12 @@
     }
 
     .time-box {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(197, 160, 89, 0.35);
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(19, 36, 56, 0.2);
       border-radius: 8px;
       padding: 6px 4px;
       min-width: 48px;
+      backdrop-filter: blur(3px);
       box-shadow: 0 4px 10px rgba(14, 26, 43, 0.05);
     }
 
@@ -201,18 +203,18 @@
       font-weight: 500;
     }
 
-    /* Bilgi Satırı - Sadece Masal Düğün Davet Salonu */
+    /* Çiçeği Boğmayan Şeffaf Bilgi Satırı */
     .event-info {
       width: 100%;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.65);
       border-radius: 12px;
-      border: 1px solid rgba(197, 160, 89, 0.3);
+      border: 1px solid rgba(197, 160, 89, 0.35);
       padding: 10px 14px;
+      backdrop-filter: blur(3px);
       display: flex;
       flex-direction: column;
       gap: 6px;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
 
     .info-line {
@@ -275,9 +277,10 @@
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.85);
       color: var(--blue-deep);
       border: 1px solid rgba(29, 53, 87, 0.35);
+      backdrop-filter: blur(2px);
     }
 
     .btn-secondary:hover {
@@ -306,27 +309,11 @@
 <body>
 
   <div class="card-wrapper">
-    <!-- Dahili Altın Çerçeve & Çiçek Görseli (Dosya yükleme derdi yok) -->
-    <svg class="bg-layer" viewBox="0 0 460 740" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Dış İnce Altın Çerçeve -->
-      <rect x="22" y="24" width="416" height="692" rx="16" stroke="#c5a059" stroke-width="1.2" stroke-opacity="0.85"/>
-      <rect x="26" y="28" width="408" height="684" rx="14" stroke="#d4b476" stroke-width="0.7" stroke-dasharray="4 3" stroke-opacity="0.6"/>
-      <!-- Köşe Zarif Altın Varak Süslemeleri -->
-      <path d="M22 45 C35 45 45 35 45 24" stroke="#c5a059" stroke-width="1.5" fill="none"/>
-      <path d="M438 45 C425 45 415 35 415 24" stroke="#c5a059" stroke-width="1.5" fill="none"/>
-      <path d="M22 695 C35 695 45 705 45 716" stroke="#c5a059" stroke-width="1.5" fill="none"/>
-      <path d="M438 695 C425 695 415 705 415 716" stroke="#c5a059" stroke-width="1.5" fill="none"/>
-      <!-- Çiçekli İllüstrasyonlar (Sol Üst) -->
-      <g opacity="0.35" fill="#c5a059">
-        <circle cx="28" cy="30" r="14" fill="#faf8f5" stroke="#c5a059" stroke-width="1"/>
-        <path d="M28 16 C31 22 36 25 42 26 C36 29 32 34 30 40 C27 34 22 30 16 28 C22 26 26 21 28 16 Z"/>
-      </g>
-      <!-- Çiçekli İllüstrasyonlar (Sağ Alt) -->
-      <g opacity="0.35" fill="#c5a059">
-        <circle cx="432" cy="710" r="14" fill="#faf8f5" stroke="#c5a059" stroke-width="1"/>
-        <path d="M432 696 C435 702 440 705 446 706 C440 709 436 714 434 720 C431 714 426 710 420 708 C426 706 430 701 432 696 Z"/>
-      </g>
-    </svg>
+    <!-- Orijinal Çiçekli Görsel (Doğrudan Çekilen CDN Kaynağı) -->
+    <img src="background.jpg" 
+         onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/projects-mf/yakup-sumeyye-soz/main/background.jpg';" 
+         alt="Çiçekli Çerçeve" 
+         class="bg-image">
 
     <main class="card-content">
       
@@ -335,7 +322,7 @@
         <div class="monogram">S &bull; Y</div>
       </div>
 
-      <!-- Çapraz İsimler -->
+      <!-- Çapraz Koyu Mavi İsimler -->
       <div class="couple-diagonal">
         <div class="name-left">Yakup İLASLAN</div>
         <div class="ampersand">&amp;</div>
@@ -375,7 +362,7 @@
         </div>
       </div>
 
-      <!-- Mekan Bilgisi: Masal Düğün Davet Salonu -->
+      <!-- Mekan Bilgisi -->
       <div class="event-info">
         <div class="info-line">
           <i class="fa-regular fa-calendar-check"></i>
@@ -389,7 +376,7 @@
 
       <!-- Butonlar -->
       <div class="actions-container">
-        <!-- Google Harita Linki -->
+        <!-- Harita Doğrudan Masal Düğün Salonunu Açar -->
         <a href="https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8" target="_blank" class="btn btn-primary">
           <i class="fa-solid fa-location-arrow"></i> Konuma Git (Harita)
         </a>
