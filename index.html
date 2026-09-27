@@ -192,7 +192,7 @@
       font-weight: 500;
     }
 
-    /* Bilgi Satırı */
+    /* Güncellenmiş Bilgi Satırı */
     .event-info {
       width: 100%;
       background: rgba(255, 255, 255, 0.6);
@@ -219,6 +219,7 @@
     .info-line i {
       color: var(--blue-mid);
       font-size: 0.82rem;
+      flex-shrink: 0;
     }
 
     .info-date {
@@ -344,7 +345,7 @@
         </div>
       </div>
 
-      <!-- Bilgi Çizgisi: Salon Adı Eklendi -->
+      <!-- Güncellenen Mekan Bilgisi -->
       <div class="event-info">
         <div class="info-line">
           <i class="fa-regular fa-calendar-check"></i>
@@ -352,13 +353,14 @@
         </div>
         <div class="info-line">
           <i class="fa-solid fa-location-dot"></i>
-          <span>Dört Mevsim Masal Kır Düğünü, Batman</span>
+          <span>Masal Düğün Davet Salonu, Batman</span>
         </div>
       </div>
 
       <!-- Butonlar -->
       <div class="actions-container">
-        <a href="https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8" target="_blank" class="btn btn-primary">
+        <!-- Doğrudan Masal Düğün Davet Salonu Arama Konumu -->
+        <a href="https://www.google.com/maps/search/?api=1&query=Masal+Düğün+Davet+Salonu+Gültepe+Beşikçi+Cd+Batman" target="_blank" class="btn btn-primary">
           <i class="fa-solid fa-location-arrow"></i> Konuma Git (Harita)
         </a>
         <a id="calendarLink" href="#" target="_blank" class="btn btn-secondary">
@@ -400,10 +402,10 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Google Takvim Linki (Salon Adı ve Konum Bağlantısı)
-    const eventTitle = encodeURIComponent("Yakup & Sümeyye Nişan Davetiyesi");
-    const eventDetails = encodeURIComponent("Yakup & Sümeyye çiftinin Nişan törenine davetlisiniz.\n\nMekan: Dört Mevsim Masal Kır Düğünü\nKonum: https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8");
-    const eventLocation = encodeURIComponent("Dört Mevsim Masal Kır Düğünü, Batman");
+    // Google Takvim Linki (Tam Adresli)
+    const eventTitle = encodeURIComponent("Yakup & Sümeyye Söz Töreni");
+    const eventDetails = encodeURIComponent("Yakup & Sümeyye çiftinin söz törenine davetlisiniz.\n\nMekan: Masal Düğün Davet Salonu\nAdres: Gültepe, Beşikçi Cd., 72050 Batman Merkez/Batman");
+    const eventLocation = encodeURIComponent("Masal Düğün Davet Salonu, Gültepe, Beşikçi Cd., 72050 Batman Merkez/Batman");
     const calDates = "20261024T163000Z/20261024T200000Z";
 
     const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${calDates}&details=${eventDetails}&location=${eventLocation}`;
