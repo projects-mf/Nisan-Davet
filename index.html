@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yakup & Sümeyye - Söz Davetiyesi</title>
+  <title>Sümeyye & Yakup - Söz Davetiyesi</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +69,6 @@
       height: 100%;
       background: linear-gradient(145deg, #1b2838 0%, #0d1522 100%);
       position: relative;
-      /* Daha yavaş ve asil bir açılış için 2.2s */
       transition: transform 2.2s cubic-bezier(0.25, 1, 0.5, 1);
       box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
       display: flex;
@@ -222,6 +221,7 @@
       margin-bottom: 8px;
     }
 
+    /* Çapraz İsimler: Sümeyye Üstte, Yakup Altta */
     .couple-diagonal {
       position: relative;
       width: 100%;
@@ -231,18 +231,18 @@
     .name-left {
       text-align: left;
       font-family: 'Cinzel Decorative', serif;
-      font-size: 1.6rem;
+      font-size: 1.85rem;
       font-weight: 700;
       line-height: 1.2;
       color: var(--blue-deep);
-      padding-left: 2px;
-      letter-spacing: 0.5px;
+      padding-left: 6px;
+      letter-spacing: 1px;
     }
 
     .ampersand {
       text-align: center;
       font-family: 'Cinzel', serif;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       color: var(--gold-line);
       margin: -2px 0;
       font-style: italic;
@@ -251,12 +251,12 @@
     .name-right {
       text-align: right;
       font-family: 'Cinzel Decorative', serif;
-      font-size: 1.6rem;
+      font-size: 1.85rem;
       font-weight: 700;
       line-height: 1.2;
       color: var(--blue-deep);
-      padding-right: 2px;
-      letter-spacing: 0.5px;
+      padding-right: 6px;
+      letter-spacing: 1px;
     }
 
     .invite-text {
@@ -425,7 +425,7 @@
         padding: 68px 28px 46px 28px;
       }
       .name-left, .name-right {
-        font-size: 1.4rem;
+        font-size: 1.55rem;
       }
       .time-box {
         min-width: 44px;
@@ -454,7 +454,7 @@
       </div>
     </div>
 
-    <!-- 2. ANA DAVETİYE KARTI (İçerideki S • Y kaldırıldı) -->
+    <!-- 2. ANA DAVETİYE KARTI -->
     <main class="card-wrapper">
       <img src="background.jpg" 
            onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/projects-mf/yakup-sumeyye-soz/main/background.jpg';" 
@@ -466,10 +466,11 @@
           <div class="top-badge">Birlikteliğe İlk Adım</div>
         </div>
 
+        <!-- Üstte Sümeyye, Altta Yakup -->
         <div class="couple-diagonal">
-          <div class="name-left">Yakup İLASLAN</div>
+          <div class="name-left">Sümeyye</div>
           <div class="ampersand">&amp;</div>
-          <div class="name-right">Sümeyye EFRENS</div>
+          <div class="name-right">Yakup</div>
         </div>
 
         <p class="invite-text">
@@ -565,8 +566,8 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    const eventTitle = encodeURIComponent("Yakup & Sümeyye Söz Töreni");
-    const eventDetails = encodeURIComponent("Yakup & Sümeyye çiftinin söz törenine davetlisiniz.\n\nMekan: Masal Düğün Davet Salonu\nKonum: https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8");
+    const eventTitle = encodeURIComponent("Sümeyye & Yakup Söz Töreni");
+    const eventDetails = encodeURIComponent("Sümeyye & Yakup çiftinin söz törenine davetlisiniz.\n\nMekan: Masal Düğün Davet Salonu\nKonum: https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8");
     const eventLocation = encodeURIComponent("Masal Düğün Davet Salonu, Gültepe, Beşikçi Cd., Batman");
     const calDates = "20261024T163000Z/20261024T200000Z";
 
