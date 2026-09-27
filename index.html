@@ -534,11 +534,21 @@
 
   <script>
     function openInvitation() {
-      const scene = document.getElementById('inviteScene');
-      if (!scene.classList.contains('opened')) {
-        scene.classList.add('opened');
-      }
+  const scene = document.getElementById('inviteScene');
+  if (!scene.classList.contains('opened')) {
+    scene.classList.add('opened');
+
+    // Ekrana tıklandığı an tam ekrana geçiş tetikleme
+    const docElm = document.documentElement;
+    if (docElm.requestFullscreen) {
+      docElm.requestFullscreen().catch(() => {});
+    } else if (docElm.webkitRequestFullscreen) { /* Safari / iOS */
+      docElm.webkitRequestFullscreen();
+    } else if (docElm.msRequestFullscreen) { /* IE/Edge */
+      docElm.msRequestFullscreen();
     }
+  }
+}
 
     const targetDate = new Date(2026, 9, 24, 19, 30, 0).getTime();
 
