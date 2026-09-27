@@ -35,21 +35,160 @@
       align-items: center;
       min-height: 100vh;
       padding: 16px 8px;
+      overflow-x: hidden;
     }
 
-    /* Ana Kart Çerçevesi */
-    .card-wrapper {
+    /* 3D Sahne Alanı */
+    .scene-container {
       position: relative;
       width: 100%;
       max-width: 460px;
       min-height: 740px;
-      border-radius: 26px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+      perspective: 1600px;
       overflow: hidden;
-      background: #faf8f5;
+      border-radius: 26px;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.22);
+      cursor: pointer;
     }
 
-    /* Çiçekli Arka Plan Katmanı */
+    /* === AÇILIR KAPI KATMANI === */
+    .door-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      display: flex;
+      pointer-events: auto;
+      transition: visibility 2.2s ease;
+    }
+
+    .door {
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(145deg, #1b2838 0%, #0d1522 100%);
+      position: relative;
+      /* Daha yavaş ve asil bir açılış için 2.2s */
+      transition: transform 2.2s cubic-bezier(0.25, 1, 0.5, 1);
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(197, 160, 89, 0.2);
+    }
+
+    .door-left {
+      transform-origin: left center;
+      border-right: 1px solid rgba(197, 160, 89, 0.4);
+    }
+
+    .door-right {
+      transform-origin: right center;
+      border-left: 1px solid rgba(197, 160, 89, 0.4);
+      justify-content: flex-end;
+    }
+
+    .door-frame-deco {
+      position: absolute;
+      top: 24px;
+      bottom: 24px;
+      border: 1px solid rgba(197, 160, 89, 0.35);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    .door-left .door-frame-deco {
+      left: 18px;
+      right: 10px;
+    }
+
+    .door-right .door-frame-deco {
+      left: 10px;
+      right: 18px;
+    }
+
+    /* Kapı Üzerindeki Mühür */
+    .door-seal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #f9f2dd 0%, #d4b068 60%, #8c6a28 100%);
+      border: 3px solid #f3e5be;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 2px 6px rgba(255, 255, 255, 0.6);
+      z-index: 15;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      animation: pulseGlow 2.5s infinite ease-in-out;
+    }
+
+    .seal-monogram {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: #3d2c0b;
+      letter-spacing: 3px;
+      line-height: 1;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+    }
+
+    .seal-tap-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.52rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #4a3814;
+      margin-top: 6px;
+      font-weight: 600;
+      opacity: 0.85;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 15px rgba(212, 176, 104, 0.3); }
+      50% { transform: translate(-50%, -50%) scale(1.04); box-shadow: 0 12px 35px rgba(0,0,0,0.6), 0 0 25px rgba(212, 176, 104, 0.6); }
+    }
+
+    /* KAPI AÇILMA ANİMASYONU */
+    .scene-container.opened .door-left {
+      transform: rotateY(-115deg);
+    }
+
+    .scene-container.opened .door-right {
+      transform: rotateY(115deg);
+    }
+
+    .scene-container.opened .door-seal {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.6);
+      pointer-events: none;
+    }
+
+    .scene-container.opened .door-wrapper {
+      pointer-events: none;
+    }
+
+    /* === DAVETİYE KARTI === */
+    .card-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 740px;
+      background: #faf8f5;
+      overflow: hidden;
+      transform: scale(0.96);
+      transition: transform 2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .scene-container.opened .card-wrapper {
+      transform: scale(1);
+    }
+
     .bg-image {
       position: absolute;
       top: 0;
@@ -61,11 +200,10 @@
       pointer-events: none;
     }
 
-    /* Çiçeklerin Üstünü Kapatmayan İçerik Alanı */
     .card-content {
       position: relative;
       z-index: 2;
-      padding: 74px 44px 52px 44px;
+      padding: 76px 44px 52px 44px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -76,32 +214,24 @@
 
     .top-badge {
       font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      letter-spacing: 4px;
+      font-size: 0.76rem;
+      letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--blue-soft);
       font-weight: 600;
+      margin-bottom: 8px;
     }
 
-    .monogram {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 1.85rem;
-      color: var(--blue-main);
-      letter-spacing: 6px;
-      margin: 4px 0 2px 0;
-    }
-
-    /* Çapraz Koyu Mavi İsimler */
     .couple-diagonal {
       position: relative;
       width: 100%;
-      margin: 6px 0 10px 0;
+      margin: 10px 0 14px 0;
     }
 
     .name-left {
       text-align: left;
       font-family: 'Cinzel Decorative', serif;
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       font-weight: 700;
       line-height: 1.2;
       color: var(--blue-deep);
@@ -112,7 +242,7 @@
     .ampersand {
       text-align: center;
       font-family: 'Cinzel', serif;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       color: var(--gold-line);
       margin: -2px 0;
       font-style: italic;
@@ -121,7 +251,7 @@
     .name-right {
       text-align: right;
       font-family: 'Cinzel Decorative', serif;
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       font-weight: 700;
       line-height: 1.2;
       color: var(--blue-deep);
@@ -158,7 +288,7 @@
       font-size: 0.55rem;
     }
 
-    /* Geri Sayım Kutucukları */
+    /* Geri Sayım */
     .countdown-title {
       font-family: 'Cinzel', serif;
       font-size: 0.68rem;
@@ -176,12 +306,11 @@
     }
 
     .time-box {
-      background: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.85);
       border: 1px solid rgba(19, 36, 56, 0.2);
       border-radius: 8px;
       padding: 6px 4px;
       min-width: 48px;
-      backdrop-filter: blur(3px);
       box-shadow: 0 4px 10px rgba(14, 26, 43, 0.05);
     }
 
@@ -203,14 +332,13 @@
       font-weight: 500;
     }
 
-    /* Çiçeği Boğmayan Şeffaf Bilgi Satırı */
+    /* Mekan Bilgisi */
     .event-info {
       width: 100%;
-      background: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.8);
       border-radius: 12px;
       border: 1px solid rgba(197, 160, 89, 0.35);
       padding: 10px 14px;
-      backdrop-filter: blur(3px);
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -277,10 +405,9 @@
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       color: var(--blue-deep);
       border: 1px solid rgba(29, 53, 87, 0.35);
-      backdrop-filter: blur(2px);
     }
 
     .btn-secondary:hover {
@@ -295,10 +422,10 @@
 
     @media (max-width: 400px) {
       .card-content {
-        padding: 68px 30px 48px 30px;
+        padding: 68px 28px 46px 28px;
       }
       .name-left, .name-right {
-        font-size: 1.35rem;
+        font-size: 1.4rem;
       }
       .time-box {
         min-width: 44px;
@@ -308,91 +435,110 @@
 </head>
 <body>
 
-  <div class="card-wrapper">
-    <!-- Orijinal Çiçekli Görsel (Doğrudan Çekilen CDN Kaynağı) -->
-    <img src="background.jpg" 
-         onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/projects-mf/yakup-sumeyye-soz/main/background.jpg';" 
-         alt="Çiçekli Çerçeve" 
-         class="bg-image">
-
-    <main class="card-content">
-      
-      <div>
-        <div class="top-badge">Birlikteliğe İlk Adım</div>
-        <div class="monogram">S &bull; Y</div>
+  <div class="scene-container" id="inviteScene" onclick="openInvitation()">
+    
+    <!-- 1. GİRİŞ KAPISI KATMANI -->
+    <div class="door-wrapper" id="doorLayer">
+      <div class="door door-left">
+        <div class="door-frame-deco"></div>
       </div>
 
-      <!-- Çapraz Koyu Mavi İsimler -->
-      <div class="couple-diagonal">
-        <div class="name-left">Yakup İLASLAN</div>
-        <div class="ampersand">&amp;</div>
-        <div class="name-right">Sümeyye EFRENS</div>
+      <!-- Ortadaki Mühür (S • Y) -->
+      <div class="door-seal">
+        <div class="seal-monogram">S &bull; Y</div>
+        <div class="seal-tap-text">Dokunun</div>
       </div>
 
-      <p class="invite-text">
-        Bu mutlu günümüzde siz değerli sevdiklerimizi aramızda görmekten onur duyarız.
-      </p>
-
-      <div class="gold-divider">
-        <span></span>
-        <i class="fa-solid fa-diamond"></i>
-        <span></span>
+      <div class="door door-right">
+        <div class="door-frame-deco"></div>
       </div>
+    </div>
 
-      <!-- Geri Sayım -->
-      <div>
-        <div class="countdown-title">Geri Sayım</div>
-        <div class="countdown-container">
-          <div class="time-box">
-            <span class="time-num" id="days">00</span>
-            <span class="time-label">Gün</span>
-          </div>
-          <div class="time-box">
-            <span class="time-num" id="hours">00</span>
-            <span class="time-label">Saat</span>
-          </div>
-          <div class="time-box">
-            <span class="time-num" id="minutes">00</span>
-            <span class="time-label">Dk</span>
-          </div>
-          <div class="time-box">
-            <span class="time-num" id="seconds">00</span>
-            <span class="time-label">Sn</span>
+    <!-- 2. ANA DAVETİYE KARTI (İçerideki S • Y kaldırıldı) -->
+    <main class="card-wrapper">
+      <img src="background.jpg" 
+           onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/projects-mf/yakup-sumeyye-soz/main/background.jpg';" 
+           alt="Çiçekli Çerçeve" 
+           class="bg-image">
+
+      <div class="card-content">
+        <div>
+          <div class="top-badge">Birlikteliğe İlk Adım</div>
+        </div>
+
+        <div class="couple-diagonal">
+          <div class="name-left">Yakup İLASLAN</div>
+          <div class="ampersand">&amp;</div>
+          <div class="name-right">Sümeyye EFRENS</div>
+        </div>
+
+        <p class="invite-text">
+          Bu mutlu günümüzde siz değerli sevdiklerimizi aramızda görmekten onur duyarız.
+        </p>
+
+        <div class="gold-divider">
+          <span></span>
+          <i class="fa-solid fa-diamond"></i>
+          <span></span>
+        </div>
+
+        <div>
+          <div class="countdown-title">Geri Sayım</div>
+          <div class="countdown-container">
+            <div class="time-box">
+              <span class="time-num" id="days">00</span>
+              <span class="time-label">Gün</span>
+            </div>
+            <div class="time-box">
+              <span class="time-num" id="hours">00</span>
+              <span class="time-label">Saat</span>
+            </div>
+            <div class="time-box">
+              <span class="time-num" id="minutes">00</span>
+              <span class="time-label">Dk</span>
+            </div>
+            <div class="time-box">
+              <span class="time-num" id="seconds">00</span>
+              <span class="time-label">Sn</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Mekan Bilgisi -->
-      <div class="event-info">
-        <div class="info-line">
-          <i class="fa-regular fa-calendar-check"></i>
-          <span class="info-date">24 EKİM 2026 &bull; 19:30</span>
+        <div class="event-info">
+          <div class="info-line">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span class="info-date">24 EKİM 2026 &bull; 19:30</span>
+          </div>
+          <div class="info-line">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Masal Düğün Davet Salonu, Batman</span>
+          </div>
         </div>
-        <div class="info-line">
-          <i class="fa-solid fa-location-dot"></i>
-          <span>Masal Düğün Davet Salonu, Batman</span>
+
+        <div class="actions-container">
+          <a href="https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8" target="_blank" class="btn btn-primary" onclick="event.stopPropagation();">
+            <i class="fa-solid fa-location-arrow"></i> Konuma Git (Harita)
+          </a>
+          <a id="calendarLink" href="#" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation();">
+            <i class="fa-regular fa-calendar-plus"></i> Takvime Ekle
+          </a>
         </div>
+
+        <footer>
+          Tüm sevdiklerimiz davetlidir.
+        </footer>
       </div>
-
-      <!-- Butonlar -->
-      <div class="actions-container">
-        <!-- Harita Doğrudan Masal Düğün Salonunu Açar -->
-        <a href="https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8" target="_blank" class="btn btn-primary">
-          <i class="fa-solid fa-location-arrow"></i> Konuma Git (Harita)
-        </a>
-        <a id="calendarLink" href="#" target="_blank" class="btn btn-secondary">
-          <i class="fa-regular fa-calendar-plus"></i> Takvime Ekle
-        </a>
-      </div>
-
-      <footer>
-        Tüm sevdiklerimiz davetlidir.
-      </footer>
-
     </main>
   </div>
 
   <script>
+    function openInvitation() {
+      const scene = document.getElementById('inviteScene');
+      if (!scene.classList.contains('opened')) {
+        scene.classList.add('opened');
+      }
+    }
+
     const targetDate = new Date(2026, 9, 24, 19, 30, 0).getTime();
 
     function updateCountdown() {
@@ -419,7 +565,6 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Google Takvim Linki
     const eventTitle = encodeURIComponent("Yakup & Sümeyye Söz Töreni");
     const eventDetails = encodeURIComponent("Yakup & Sümeyye çiftinin söz törenine davetlisiniz.\n\nMekan: Masal Düğün Davet Salonu\nKonum: https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8");
     const eventLocation = encodeURIComponent("Masal Düğün Davet Salonu, Gültepe, Beşikçi Cd., Batman");
