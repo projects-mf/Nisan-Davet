@@ -235,7 +235,7 @@
       font-weight: 700;
       line-height: 1.2;
       color: var(--blue-deep);
-      padding-left: 6px;
+      padding-left: 40px;
       letter-spacing: 1px;
     }
 
@@ -255,7 +255,7 @@
       font-weight: 700;
       line-height: 1.2;
       color: var(--blue-deep);
-      padding-right: 6px;
+      padding-right: 50px;
       letter-spacing: 1px;
     }
 
@@ -446,7 +446,6 @@
       <!-- Ortadaki Mühür (S • Y) -->
       <div class="door-seal">
         <div class="seal-monogram">S &bull; Y</div>
-        <div class="seal-tap-text">Dokunun</div>
       </div>
 
       <div class="door door-right">
@@ -456,10 +455,9 @@
 
     <!-- 2. ANA DAVETİYE KARTI -->
     <main class="card-wrapper">
-      <img src="background.jpg" 
-           onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/projects-mf/yakup-sumeyye-soz/main/background.jpg';" 
-           alt="Çiçekli Çerçeve" 
-           class="bg-image">
+      <img src="https://raw.githubusercontent.com/projects-mf/Nisan-Davet/main/background.jpg" 
+     alt="Çiçekli Çerçeve" 
+     class="bg-image">
 
       <div class="card-content">
         <div>
@@ -505,6 +503,7 @@
           </div>
         </div>
 
+        <!-- Mekan Bilgisi (Açık Adres) -->
         <div class="event-info">
           <div class="info-line">
             <i class="fa-regular fa-calendar-check"></i>
@@ -516,8 +515,9 @@
           </div>
         </div>
 
+        <!-- Butonlar (Doğrudan Masal Düğün Davet Salonu Açık Adres Araması) -->
         <div class="actions-container">
-          <a href="https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8" target="_blank" class="btn btn-primary" onclick="event.stopPropagation();">
+          <a href="https://www.google.com/maps/search/?api=1&query=Masal+Düğün+Davet+Salonu+Gültepe+Beşikçi+Cd+Batman" target="_blank" class="btn btn-primary" onclick="event.stopPropagation();">
             <i class="fa-solid fa-location-arrow"></i> Konuma Git (Harita)
           </a>
           <a id="calendarLink" href="#" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation();">
@@ -566,9 +566,10 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    const eventTitle = encodeURIComponent("Sümeyye & Yakup Söz Töreni");
-    const eventDetails = encodeURIComponent("Sümeyye & Yakup çiftinin söz törenine davetlisiniz.\n\nMekan: Masal Düğün Davet Salonu\nKonum: https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8");
-    const eventLocation = encodeURIComponent("Masal Düğün Davet Salonu, Gültepe, Beşikçi Cd., Batman");
+    // Google Takvim Linki (Tam Açık Adres ve Maps Bağlantılı)
+    const eventTitle = encodeURIComponent("Sümeyye & Yakup Nişan Töreni");
+    const eventDetails = encodeURIComponent("Sümeyye & Yakup çiftinin Nişan Törenine davetlisiniz.\n\nMekan: Masal Düğün Davet Salonu\nAdres: Gültepe, Beşikçi Cd., 72050 Batman Merkez/Batman");
+    const eventLocation = encodeURIComponent("Masal Düğün Davet Salonu, Gültepe, Beşikçi Cd., 72050 Batman Merkez/Batman");
     const calDates = "20261024T163000Z/20261024T200000Z";
 
     document.getElementById("calendarLink").href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${calDates}&details=${eventDetails}&location=${eventLocation}`;
