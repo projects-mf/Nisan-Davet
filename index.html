@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yakup & Sümeyye - Söz Davetiyesi</title>
+  
+  <!-- Lüks Serif Başlık Fontları -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --blue-deep: #0e1a2b;
+      --blue-main: #132438;
+      --blue-mid: #1d3557;
+      --blue-soft: #2a486c;
+      --gold-line: #d4af37;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #e8e3dc;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--blue-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px 8px;
+    }
+
+    /* Arka Plan Görseli */
+    .card-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      background-image: url('background.jpg');
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    /* Çiçeklerin üstünü kapatmayan güvenli iç boşluk */
+    .card-content {
+      padding: 72px 46px 54px 46px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 730px;
+    }
+
+    .top-badge {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--blue-soft);
+      font-weight: 600;
+    }
+
+    .monogram {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.85rem;
+      color: var(--blue-main);
+      letter-spacing: 6px;
+      margin: 4px 0 2px 0;
+    }
+
+    /* Çapraz Koyu Mavi İsimler */
+    .couple-diagonal {
+      position: relative;
+      width: 100%;
+      margin: 6px 0 10px 0;
+    }
+
+    .name-left {
+      text-align: left;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--blue-deep);
+      padding-left: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .ampersand {
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: var(--gold-line);
+      margin: -2px 0;
+      font-style: italic;
+    }
+
+    .name-right {
+      text-align: right;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--blue-deep);
+      padding-right: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .invite-text {
+      font-size: 0.76rem;
+      line-height: 1.6;
+      color: var(--blue-soft);
+      font-style: italic;
+      margin: 0 auto;
+      max-width: 92%;
+    }
+
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 4px 0;
+      width: 100%;
+    }
+
+    .gold-divider span {
+      height: 1px;
+      width: 40px;
+      background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
+    }
+
+    .gold-divider i {
+      color: var(--gold-line);
+      font-size: 0.55rem;
+    }
+
+    /* Geri Sayım */
+    .countdown-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blue-main);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .time-box {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(19, 36, 56, 0.2);
+      border-radius: 8px;
+      padding: 6px 4px;
+      min-width: 48px;
+      backdrop-filter: blur(3px);
+      box-shadow: 0 4px 10px rgba(14, 26, 43, 0.05);
+    }
+
+    .time-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--blue-deep);
+      display: block;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .time-label {
+      font-size: 0.52rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--blue-soft);
+      font-weight: 500;
+    }
+
+    /* Bilgi Satırı */
+    .event-info {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      border: 1px solid rgba(19, 36, 56, 0.18);
+      padding: 10px 14px;
+      backdrop-filter: blur(3px);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: center;
+    }
+
+    .info-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      color: var(--blue-deep);
+      font-weight: 500;
+    }
+
+    .info-line i {
+      color: var(--blue-mid);
+      font-size: 0.82rem;
+    }
+
+    .info-date {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      color: var(--blue-deep);
+      letter-spacing: 0.5px;
+    }
+
+    /* Butonlar */
+    .actions-container {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1d3557 0%, #0e1a2b 100%);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 4px 12px rgba(14, 26, 43, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #132438 0%, #080f1a 100%);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--blue-deep);
+      border: 1px solid rgba(29, 53, 87, 0.35);
+      backdrop-filter: blur(2px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    footer {
+      font-size: 0.65rem;
+      color: var(--blue-soft);
+      letter-spacing: 0.8px;
+    }
+
+    @media (max-width: 400px) {
+      .card-content {
+        padding: 64px 34px 44px 34px;
+      }
+      .name-left, .name-right {
+        font-size: 1.35rem;
+      }
+      .time-box {
+        min-width: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-wrapper">
+    <main class="card-content">
+      
+      <div>
+        <div class="top-badge">Birlikteliğe İlk Adım</div>
+        <div class="monogram">S &bull; Y</div>
+      </div>
+
+      <!-- Çapraz Koyu Mavi İsimler -->
+      <div class="couple-diagonal">
+        <div class="name-left">Yakup İLASLAN</div>
+        <div class="ampersand">&amp;</div>
+        <div class="name-right">Sümeyye EFRENS</div>
+      </div>
+
+      <p class="invite-text">
+        Bu mutlu günümüzde siz değerli sevdiklerimizi aramızda görmekten onur duyarız.
+      </p>
+
+      <div class="gold-divider">
+        <span></span>
+        <i class="fa-solid fa-diamond"></i>
+        <span></span>
+      </div>
+
+      <!-- Geri Sayım -->
+      <div>
+        <div class="countdown-title">Geri Sayım</div>
+        <div class="countdown-container">
+          <div class="time-box">
+            <span class="time-num" id="days">00</span>
+            <span class="time-label">Gün</span>
+          </div>
+          <div class="time-box">
+            <span class="time-num" id="hours">00</span>
+            <span class="time-label">Saat</span>
+          </div>
+          <div class="time-box">
+            <span class="time-num" id="minutes">00</span>
+            <span class="time-label">Dk</span>
+          </div>
+          <div class="time-box">
+            <span class="time-num" id="seconds">00</span>
+            <span class="time-label">Sn</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bilgi Çizgisi: Salon Adı Eklendi -->
+      <div class="event-info">
+        <div class="info-line">
+          <i class="fa-regular fa-calendar-check"></i>
+          <span class="info-date">24 EKİM 2026 &bull; 19:30</span>
+        </div>
+        <div class="info-line">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Dört Mevsim Masal Kır Düğünü, Batman</span>
+        </div>
+      </div>
+
+      <!-- Butonlar -->
+      <div class="actions-container">
+        <a href="https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8" target="_blank" class="btn btn-primary">
+          <i class="fa-solid fa-location-arrow"></i> Konuma Git (Harita)
+        </a>
+        <a id="calendarLink" href="#" target="_blank" class="btn btn-secondary">
+          <i class="fa-regular fa-calendar-plus"></i> Takvime Ekle
+        </a>
+      </div>
+
+      <footer>
+        Tüm sevdiklerimiz davetlidir.
+      </footer>
+
+    </main>
+  </div>
+
+  <script>
+    const targetDate = new Date(2026, 9, 24, 19, 30, 0).getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        document.querySelector('.countdown-container').innerHTML = 
+          "<p style='color: var(--blue-deep); font-weight: 700; font-family: Cinzel, serif;'>Kutlama Başladı!</p>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+      document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+      document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+      document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Google Takvim Linki (Salon Adı ve Konum Bağlantısı)
+    const eventTitle = encodeURIComponent("Yakup & Sümeyye Nişan Davetiyesi");
+    const eventDetails = encodeURIComponent("Yakup & Sümeyye çiftinin Nişan törenine davetlisiniz.\n\nMekan: Dört Mevsim Masal Kır Düğünü\nKonum: https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8");
+    const eventLocation = encodeURIComponent("Dört Mevsim Masal Kır Düğünü, Batman");
+    const calDates = "20261024T163000Z/20261024T200000Z";
+
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${calDates}&details=${eventDetails}&location=${eventLocation}`;
+    document.getElementById("calendarLink").href = googleCalendarUrl;
+  </script>
+</body>
+</html>
