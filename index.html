@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yakup & Sümeyye - Söz Davetiyesi</title>
   
-  <!-- Lüks Serif Başlık Fontları -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -18,7 +16,8 @@
       --blue-main: #132438;
       --blue-mid: #1d3557;
       --blue-soft: #2a486c;
-      --gold-line: #d4af37;
+      --gold-line: #c5a059;
+      --gold-dark: #916e2c;
     }
 
     * {
@@ -28,7 +27,7 @@
     }
 
     body {
-      background-color: #e8e3dc;
+      background-color: #ede9e3;
       font-family: 'Montserrat', sans-serif;
       color: var(--blue-main);
       display: flex;
@@ -38,29 +37,40 @@
       padding: 16px 8px;
     }
 
-    /* Arka Plan Görseli */
+    /* Ana Kutu */
     .card-wrapper {
       position: relative;
       width: 100%;
       max-width: 460px;
-      background-image: url('./background.jpg');
-      background-size: 100% 100%;
-      background-position: center;
-      background-repeat: no-repeat;
-      border-radius: 24px;
+      min-height: 740px;
+      border-radius: 26px;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
       overflow: hidden;
+      background: #faf8f5;
     }
 
-    /* Çiçeklerin üstünü kapatmayan güvenli iç boşluk */
+    /* Dosya Yolu Sorununu Kökten Çözen Gömülü Arka Plan Katmanı */
+    .bg-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* İçerik Katmanı: Altın Çerçevenin Tam İçine Oturur */
     .card-content {
-      padding: 72px 46px 54px 46px;
+      position: relative;
+      z-index: 2;
+      padding: 76px 44px 56px 44px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      min-height: 730px;
+      min-height: 740px;
     }
 
     .top-badge {
@@ -165,12 +175,11 @@
     }
 
     .time-box {
-      background: rgba(255, 255, 255, 0.75);
-      border: 1px solid rgba(19, 36, 56, 0.2);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(197, 160, 89, 0.35);
       border-radius: 8px;
       padding: 6px 4px;
       min-width: 48px;
-      backdrop-filter: blur(3px);
       box-shadow: 0 4px 10px rgba(14, 26, 43, 0.05);
     }
 
@@ -192,18 +201,18 @@
       font-weight: 500;
     }
 
-    /* Güncellenmiş Bilgi Satırı */
+    /* Bilgi Satırı - Sadece Masal Düğün Davet Salonu */
     .event-info {
       width: 100%;
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.85);
       border-radius: 12px;
-      border: 1px solid rgba(19, 36, 56, 0.18);
+      border: 1px solid rgba(197, 160, 89, 0.3);
       padding: 10px 14px;
-      backdrop-filter: blur(3px);
       display: flex;
       flex-direction: column;
       gap: 6px;
       text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
 
     .info-line {
@@ -217,8 +226,8 @@
     }
 
     .info-line i {
-      color: var(--blue-mid);
-      font-size: 0.82rem;
+      color: var(--gold-dark);
+      font-size: 0.85rem;
       flex-shrink: 0;
     }
 
@@ -243,7 +252,7 @@
       justify-content: center;
       gap: 8px;
       width: 100%;
-      padding: 10px 14px;
+      padding: 11px 14px;
       border-radius: 8px;
       font-size: 0.75rem;
       font-weight: 600;
@@ -266,14 +275,13 @@
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.9);
       color: var(--blue-deep);
       border: 1px solid rgba(29, 53, 87, 0.35);
-      backdrop-filter: blur(2px);
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.98);
+      background: #ffffff;
     }
 
     footer {
@@ -284,7 +292,7 @@
 
     @media (max-width: 400px) {
       .card-content {
-        padding: 64px 34px 44px 34px;
+        padding: 68px 30px 48px 30px;
       }
       .name-left, .name-right {
         font-size: 1.35rem;
@@ -298,6 +306,28 @@
 <body>
 
   <div class="card-wrapper">
+    <!-- Dahili Altın Çerçeve & Çiçek Görseli (Dosya yükleme derdi yok) -->
+    <svg class="bg-layer" viewBox="0 0 460 740" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Dış İnce Altın Çerçeve -->
+      <rect x="22" y="24" width="416" height="692" rx="16" stroke="#c5a059" stroke-width="1.2" stroke-opacity="0.85"/>
+      <rect x="26" y="28" width="408" height="684" rx="14" stroke="#d4b476" stroke-width="0.7" stroke-dasharray="4 3" stroke-opacity="0.6"/>
+      <!-- Köşe Zarif Altın Varak Süslemeleri -->
+      <path d="M22 45 C35 45 45 35 45 24" stroke="#c5a059" stroke-width="1.5" fill="none"/>
+      <path d="M438 45 C425 45 415 35 415 24" stroke="#c5a059" stroke-width="1.5" fill="none"/>
+      <path d="M22 695 C35 695 45 705 45 716" stroke="#c5a059" stroke-width="1.5" fill="none"/>
+      <path d="M438 695 C425 695 415 705 415 716" stroke="#c5a059" stroke-width="1.5" fill="none"/>
+      <!-- Çiçekli İllüstrasyonlar (Sol Üst) -->
+      <g opacity="0.35" fill="#c5a059">
+        <circle cx="28" cy="30" r="14" fill="#faf8f5" stroke="#c5a059" stroke-width="1"/>
+        <path d="M28 16 C31 22 36 25 42 26 C36 29 32 34 30 40 C27 34 22 30 16 28 C22 26 26 21 28 16 Z"/>
+      </g>
+      <!-- Çiçekli İllüstrasyonlar (Sağ Alt) -->
+      <g opacity="0.35" fill="#c5a059">
+        <circle cx="432" cy="710" r="14" fill="#faf8f5" stroke="#c5a059" stroke-width="1"/>
+        <path d="M432 696 C435 702 440 705 446 706 C440 709 436 714 434 720 C431 714 426 710 420 708 C426 706 430 701 432 696 Z"/>
+      </g>
+    </svg>
+
     <main class="card-content">
       
       <div>
@@ -305,7 +335,7 @@
         <div class="monogram">S &bull; Y</div>
       </div>
 
-      <!-- Çapraz Koyu Mavi İsimler -->
+      <!-- Çapraz İsimler -->
       <div class="couple-diagonal">
         <div class="name-left">Yakup İLASLAN</div>
         <div class="ampersand">&amp;</div>
@@ -345,7 +375,7 @@
         </div>
       </div>
 
-      <!-- Güncellenen Mekan Bilgisi -->
+      <!-- Mekan Bilgisi: Masal Düğün Davet Salonu -->
       <div class="event-info">
         <div class="info-line">
           <i class="fa-regular fa-calendar-check"></i>
@@ -359,8 +389,8 @@
 
       <!-- Butonlar -->
       <div class="actions-container">
-        <!-- Doğrudan Masal Düğün Davet Salonu Arama Konumu -->
-        <a href="https://www.google.com/maps/search/?api=1&query=Masal+Düğün+Davet+Salonu+Gültepe+Beşikçi+Cd+Batman" target="_blank" class="btn btn-primary">
+        <!-- Google Harita Linki -->
+        <a href="https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8" target="_blank" class="btn btn-primary">
           <i class="fa-solid fa-location-arrow"></i> Konuma Git (Harita)
         </a>
         <a id="calendarLink" href="#" target="_blank" class="btn btn-secondary">
@@ -402,14 +432,13 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Google Takvim Linki (Tam Adresli)
+    // Google Takvim Linki
     const eventTitle = encodeURIComponent("Yakup & Sümeyye Söz Töreni");
-    const eventDetails = encodeURIComponent("Yakup & Sümeyye çiftinin söz törenine davetlisiniz.\n\nMekan: Masal Düğün Davet Salonu\nAdres: Gültepe, Beşikçi Cd., 72050 Batman Merkez/Batman");
-    const eventLocation = encodeURIComponent("Masal Düğün Davet Salonu, Gültepe, Beşikçi Cd., 72050 Batman Merkez/Batman");
+    const eventDetails = encodeURIComponent("Yakup & Sümeyye çiftinin söz törenine davetlisiniz.\n\nMekan: Masal Düğün Davet Salonu\nKonum: https://maps.app.goo.gl/BvmCw5WuQT1ESkSK8");
+    const eventLocation = encodeURIComponent("Masal Düğün Davet Salonu, Gültepe, Beşikçi Cd., Batman");
     const calDates = "20261024T163000Z/20261024T200000Z";
 
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${calDates}&details=${eventDetails}&location=${eventLocation}`;
-    document.getElementById("calendarLink").href = googleCalendarUrl;
+    document.getElementById("calendarLink").href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${calDates}&details=${eventDetails}&location=${eventLocation}`;
   </script>
 </body>
 </html>
