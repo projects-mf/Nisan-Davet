@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sümeyye & Yakup - Söz Davetiyesi</title>
-  
+  <title>Sümeyye & Yakup - Nişan Davetiyesi</title>
+
+  <!-- SOSYAL MEDYA & WHATSAPP ÖNİZLEME -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://projects-mf.github.io/Nisan-Davet/">
+  <meta property="og:title" content="Sümeyye & Yakup - Nişan Davetiyesi">
+  <meta property="og:description" content="Nişan törenimizde sizleri aramızda görmekten mutluluk duyarız.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/projects-mf/Nisan-Davet/main/door.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -24,6 +33,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -43,7 +53,7 @@
       position: relative;
       width: 100%;
       max-width: 460px;
-      min-height: 740px;
+      min-height: 760px;
       perspective: 1600px;
       overflow: hidden;
       border-radius: 26px;
@@ -51,7 +61,7 @@
       cursor: pointer;
     }
 
-    /* === AÇILIR KAPI KATMANI === */
+    /* === GÜLLÜ İKİ KANATLI KAPI KATMANI === */
     .door-wrapper {
       position: absolute;
       top: 0;
@@ -61,49 +71,32 @@
       z-index: 10;
       display: flex;
       pointer-events: auto;
-      transition: visibility 2.2s ease;
+      transition: visibility 3.5s ease;
     }
 
     .door {
       width: 50%;
       height: 100%;
-      background: linear-gradient(145deg, #1b2838 0%, #0d1522 100%);
       position: relative;
-      transition: transform 2.2s cubic-bezier(0.25, 1, 0.5, 1);
-      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
-      display: flex;
-      align-items: center;
-      border: 1px solid rgba(197, 160, 89, 0.2);
+      background-image: url('door.jpg'), url('https://raw.githubusercontent.com/projects-mf/Nisan-Davet/main/door.jpg');
+      background-size: 200% 100%;
+      background-repeat: no-repeat;
+      transition: transform 3.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 3.4s ease;
+      box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.45);
     }
 
+    /* Sol Kanat */
     .door-left {
+      background-position: left center;
       transform-origin: left center;
-      border-right: 1px solid rgba(197, 160, 89, 0.4);
+      border-right: 1px solid rgba(197, 160, 89, 0.45);
     }
 
+    /* Sağ Kanat */
     .door-right {
+      background-position: right center;
       transform-origin: right center;
-      border-left: 1px solid rgba(197, 160, 89, 0.4);
-      justify-content: flex-end;
-    }
-
-    .door-frame-deco {
-      position: absolute;
-      top: 24px;
-      bottom: 24px;
-      border: 1px solid rgba(197, 160, 89, 0.35);
-      border-radius: 12px;
-      pointer-events: none;
-    }
-
-    .door-left .door-frame-deco {
-      left: 18px;
-      right: 10px;
-    }
-
-    .door-right .door-frame-deco {
-      left: 10px;
-      right: 18px;
+      border-left: 1px solid rgba(197, 160, 89, 0.45);
     }
 
     /* Kapı Üzerindeki Mühür */
@@ -112,24 +105,23 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 110px;
-      height: 110px;
+      width: 116px;
+      height: 116px;
       border-radius: 50%;
-      background: radial-gradient(circle, #f9f2dd 0%, #d4b068 60%, #8c6a28 100%);
-      border: 3px solid #f3e5be;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 2px 6px rgba(255, 255, 255, 0.6);
+      background: radial-gradient(circle, #fffaf0 0%, #ecd79b 55%, #8c6a28 100%);
+      border: 3px solid #fff3d1;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 2px 6px rgba(255, 255, 255, 0.7);
       z-index: 15;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transition: opacity 1.2s ease, transform 1.2s ease;
       animation: pulseGlow 2.5s infinite ease-in-out;
     }
 
     .seal-monogram {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 1.55rem;
+      font-size: 1.65rem;
       font-weight: 700;
       color: #3d2c0b;
       letter-spacing: 3px;
@@ -137,34 +129,31 @@
       text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
     }
 
-    .seal-tap-text {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.52rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #4a3814;
-      margin-top: 6px;
-      font-weight: 600;
-      opacity: 0.85;
-    }
-
     @keyframes pulseGlow {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 15px rgba(212, 176, 104, 0.3); }
-      50% { transform: translate(-50%, -50%) scale(1.04); box-shadow: 0 12px 35px rgba(0,0,0,0.6), 0 0 25px rgba(212, 176, 104, 0.6); }
+      0%, 100% { 
+        transform: translate(-50%, -50%) scale(1); 
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4), 0 0 15px rgba(212, 176, 104, 0.3); 
+      }
+      50% { 
+        transform: translate(-50%, -50%) scale(1.04); 
+        box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 0 25px rgba(212, 176, 104, 0.6); 
+      }
     }
 
     /* KAPI AÇILMA ANİMASYONU */
     .scene-container.opened .door-left {
       transform: rotateY(-115deg);
+      box-shadow: -15px 0 35px rgba(0, 0, 0, 0.7);
     }
 
     .scene-container.opened .door-right {
       transform: rotateY(115deg);
+      box-shadow: 15px 0 35px rgba(0, 0, 0, 0.7);
     }
 
     .scene-container.opened .door-seal {
       opacity: 0;
-      transform: translate(-50%, -50%) scale(0.6);
+      transform: translate(-50%, -50%) scale(0.5);
       pointer-events: none;
     }
 
@@ -177,11 +166,11 @@
       position: relative;
       width: 100%;
       height: 100%;
-      min-height: 740px;
+      min-height: 760px;
       background: #faf8f5;
       overflow: hidden;
       transform: scale(0.96);
-      transition: transform 2s cubic-bezier(0.25, 1, 0.5, 1);
+      transition: transform 3.2s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .scene-container.opened .card-wrapper {
@@ -202,13 +191,13 @@
     .card-content {
       position: relative;
       z-index: 2;
-      padding: 76px 44px 52px 44px;
+      padding: 68px 36px 42px 36px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      min-height: 740px;
+      min-height: 760px;
     }
 
     .top-badge {
@@ -218,14 +207,14 @@
       text-transform: uppercase;
       color: var(--blue-soft);
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     /* Çapraz İsimler: Sümeyye Üstte, Yakup Altta */
     .couple-diagonal {
       position: relative;
       width: 100%;
-      margin: 10px 0 14px 0;
+      margin: 6px 0 10px 0;
     }
 
     .name-left {
@@ -235,7 +224,7 @@
       font-weight: 700;
       line-height: 1.2;
       color: var(--blue-deep);
-      padding-left: 40px;
+      padding-left: 30px;
       letter-spacing: 1px;
     }
 
@@ -244,7 +233,7 @@
       font-family: 'Cinzel', serif;
       font-size: 1.35rem;
       color: var(--gold-line);
-      margin: -2px 0;
+      margin: -4px 0;
       font-style: italic;
     }
 
@@ -260,12 +249,62 @@
     }
 
     .invite-text {
-      font-size: 0.76rem;
-      line-height: 1.6;
+      font-size: 0.74rem;
+      line-height: 1.5;
       color: var(--blue-soft);
       font-style: italic;
       margin: 0 auto;
-      max-width: 92%;
+      max-width: 94%;
+    }
+
+    /* Aile Bilgileri Alanı */
+    .families-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
+      margin: 8px 0 4px 0;
+    }
+
+    .family-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .family-parents {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 1.2px;
+      font-weight: 600;
+      color: var(--blue-main);
+      text-transform: uppercase;
+    }
+
+    .family-surname {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--blue-deep);
+    }
+
+    .family-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--gold-line);
+      font-size: 0.65rem;
+      opacity: 0.85;
+    }
+
+    .family-divider span {
+      width: 1px;
+      height: 12px;
+      background: var(--gold-line);
+      opacity: 0.5;
     }
 
     .gold-divider {
@@ -341,7 +380,7 @@
       padding: 10px 14px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
       text-align: center;
     }
 
@@ -368,11 +407,10 @@
       letter-spacing: 0.5px;
     }
 
-    /* Butonlar */
+    /* Buton */
     .actions-container {
       display: flex;
       flex-direction: column;
-      gap: 7px;
       width: 100%;
     }
 
@@ -404,16 +442,6 @@
       transform: translateY(-1px);
     }
 
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--blue-deep);
-      border: 1px solid rgba(29, 53, 87, 0.35);
-    }
-
-    .btn-secondary:hover {
-      background: #ffffff;
-    }
-
     footer {
       font-size: 0.65rem;
       color: var(--blue-soft);
@@ -422,7 +450,7 @@
 
     @media (max-width: 400px) {
       .card-content {
-        padding: 68px 28px 46px 28px;
+        padding: 62px 24px 38px 24px;
       }
       .name-left, .name-right {
         font-size: 1.55rem;
@@ -437,31 +465,28 @@
 
   <div class="scene-container" id="inviteScene" onclick="openInvitation()">
     
-    <!-- 1. GİRİŞ KAPISI KATMANI -->
+    <!-- 1. GÜLLÜ YAĞLI BOYA KAPI KATMANI -->
     <div class="door-wrapper" id="doorLayer">
-      <div class="door door-left">
-        <div class="door-frame-deco"></div>
-      </div>
+      <div class="door door-left"></div>
 
-      <!-- Ortadaki Mühür (S • Y) -->
+      <!-- Ortadaki Mühür -->
       <div class="door-seal">
         <div class="seal-monogram">S &bull; Y</div>
       </div>
 
-      <div class="door door-right">
-        <div class="door-frame-deco"></div>
-      </div>
+      <div class="door door-right"></div>
     </div>
 
     <!-- 2. ANA DAVETİYE KARTI -->
     <main class="card-wrapper">
-      <img src="https://raw.githubusercontent.com/projects-mf/Nisan-Davet/main/background.jpg" 
-     alt="Çiçekli Çerçeve" 
-     class="bg-image">
+      <img src="background.jpg" 
+           onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/projects-mf/Nisan-Davet/main/background.jpg';" 
+           alt="Arka Plan Görseli" 
+           class="bg-image">
 
       <div class="card-content">
         <div>
-          <div class="top-badge">Birlikteliğe İlk Adım</div>
+          <div class="top-badge">Nişan Töreni</div>
         </div>
 
         <!-- Üstte Sümeyye, Altta Yakup -->
@@ -472,8 +497,27 @@
         </div>
 
         <p class="invite-text">
-          Bu mutlu günümüzde siz değerli sevdiklerimizi aramızda görmekten onur duyarız.
+          Nişan törenimizde sizleri aramızda görmekten mutluluk duyarız.
         </p>
+
+        <!-- Aile Bilgileri -->
+        <div class="families-section">
+          <div class="family-col">
+            <span class="family-parents">Ayten - Hüseyin</span>
+            <span class="family-surname">İLASLAN</span>
+          </div>
+
+          <div class="family-divider">
+            <span></span>
+            <i class="fa-regular fa-heart" style="margin: 3px 0;"></i>
+            <span></span>
+          </div>
+
+          <div class="family-col">
+            <span class="family-parents">Meryema - İlham</span>
+            <span class="family-surname">EFRENS</span>
+          </div>
+        </div>
 
         <div class="gold-divider">
           <span></span>
@@ -481,6 +525,7 @@
           <span></span>
         </div>
 
+        <!-- Geri Sayım -->
         <div>
           <div class="countdown-title">Geri Sayım</div>
           <div class="countdown-container">
@@ -507,21 +552,21 @@
         <div class="event-info">
           <div class="info-line">
             <i class="fa-regular fa-calendar-check"></i>
-            <span class="info-date">24 EKİM 2026 &bull; 19:30</span>
+            <span class="info-date">11 EKİM 2026 &bull; 12:00</span>
           </div>
           <div class="info-line">
             <i class="fa-solid fa-location-dot"></i>
-            <span>Masal Düğün Davet Salonu, Batman</span>
+            <span>Masal Düğün Davet Salonu</span>
+          </div>
+          <div style="font-size: 0.65rem; color: var(--blue-soft); line-height: 1.3;">
+            Gültepe Mah. Beşikçi Cad. Dünya AVM Üstü No:7/7 &bull; BATMAN
           </div>
         </div>
 
-        <!-- Butonlar (Doğrudan Masal Düğün Davet Salonu Açık Adres Araması) -->
+        <!-- Harita Butonu -->
         <div class="actions-container">
-          <a href="https://www.google.com/maps/search/?api=1&query=Masal+Düğün+Davet+Salonu+Gültepe+Beşikçi+Cd+Batman" target="_blank" class="btn btn-primary" onclick="event.stopPropagation();">
+          <a href="https://www.google.com/maps/search/?api=1&query=Masal+Düğün+Davet+Salonu+Gültepe+Mahallesi+Beşikçi+Caddesi+Batman" target="_blank" class="btn btn-primary" onclick="event.stopPropagation();">
             <i class="fa-solid fa-location-arrow"></i> Konuma Git (Harita)
-          </a>
-          <a id="calendarLink" href="#" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation();">
-            <i class="fa-regular fa-calendar-plus"></i> Takvime Ekle
           </a>
         </div>
 
@@ -534,23 +579,14 @@
 
   <script>
     function openInvitation() {
-  const scene = document.getElementById('inviteScene');
-  if (!scene.classList.contains('opened')) {
-    scene.classList.add('opened');
-
-    // Ekrana tıklandığı an tam ekrana geçiş tetikleme
-    const docElm = document.documentElement;
-    if (docElm.requestFullscreen) {
-      docElm.requestFullscreen().catch(() => {});
-    } else if (docElm.webkitRequestFullscreen) { /* Safari / iOS */
-      docElm.webkitRequestFullscreen();
-    } else if (docElm.msRequestFullscreen) { /* IE/Edge */
-      docElm.msRequestFullscreen();
+      const scene = document.getElementById('inviteScene');
+      if (!scene.classList.contains('opened')) {
+        scene.classList.add('opened');
+      }
     }
-  }
-}
 
-    const targetDate = new Date(2026, 9, 24, 19, 30, 0).getTime();
+    // 11 Ekim 2026 Saat 12:00
+    const targetDate = new Date(2026, 9, 11, 12, 0, 0).getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -575,14 +611,6 @@
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
-
-    // Google Takvim Linki (Tam Açık Adres ve Maps Bağlantılı)
-    const eventTitle = encodeURIComponent("Sümeyye & Yakup Nişan Töreni");
-    const eventDetails = encodeURIComponent("Sümeyye & Yakup çiftinin Nişan Törenine davetlisiniz.\n\nMekan: Masal Düğün Davet Salonu\nAdres: Gültepe, Beşikçi Cd., 72050 Batman Merkez/Batman");
-    const eventLocation = encodeURIComponent("Masal Düğün Davet Salonu, Gültepe, Beşikçi Cd., 72050 Batman Merkez/Batman");
-    const calDates = "20261024T163000Z/20261024T200000Z";
-
-    document.getElementById("calendarLink").href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${calDates}&details=${eventDetails}&location=${eventLocation}`;
   </script>
 </body>
 </html>
