@@ -5,14 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sümeyye & Yakup - Nişan Davetiyesi</title>
 
-  <!-- SOSYAL MEDYA & WHATSAPP ÖNİZLEME -->
+  <!-- SOSYAL MEDYA & WHATSAPP ÖNİZLEME (BU GÖRSEL ÇIKACAK) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://projects-mf.github.io/Nisan-Davet/">
   <meta property="og:title" content="Sümeyye & Yakup - Nişan Davetiyesi">
-  <meta property="og:description" content="Nişan törenimizde sizleri aramızda görmekten mutluluk duyarız.">
-  <meta property="og:image" content="https://raw.githubusercontent.com/projects-mf/Nisan-Davet/main/door.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:description" content="11 Ekim 2026 Saat 12:00 • Masal Düğün Davet Salonu, Batman">
+  <meta property="og:image" content="https://projects-mf.github.io/Nisan-Davet/preview.jpg">
+  <meta property="og:image:secure_url" content="https://projects-mf.github.io/Nisan-Davet/preview.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1000">
+  <meta property="og:image:height" content="1500">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sümeyye & Yakup - Nişan Davetiyesi">
+  <meta name="twitter:description" content="11 Ekim 2026 Saat 12:00 • Masal Düğün Davet Salonu, Batman">
+  <meta name="twitter:image" content="https://projects-mf.github.io/Nisan-Davet/preview.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +39,6 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -113,6 +118,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 2px 6px rgba(255, 255, 255, 0.7);
       z-index: 15;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       transition: opacity 1.2s ease, transform 1.2s ease;
@@ -121,12 +127,24 @@
 
     .seal-monogram {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 1.65rem;
+      font-size: 1.55rem;
       font-weight: 700;
       color: #3d2c0b;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       line-height: 1;
       text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+    }
+
+    /* Harflerin Altındaki Dokunun Yazısı */
+    .seal-tap-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.52rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #5c4416;
+      font-weight: 700;
+      margin-top: 5px;
+      opacity: 0.85;
     }
 
     @keyframes pulseGlow {
@@ -472,6 +490,7 @@
       <!-- Ortadaki Mühür -->
       <div class="door-seal">
         <div class="seal-monogram">S &bull; Y</div>
+        <div class="seal-tap-text">DOKUNUN</div>
       </div>
 
       <div class="door door-right"></div>
@@ -582,6 +601,17 @@
       const scene = document.getElementById('inviteScene');
       if (!scene.classList.contains('opened')) {
         scene.classList.add('opened');
+
+        // TAM EKRAN ÇAĞRISI
+        const docElm = document.documentElement;
+        const requestFullscreen = docElm.requestFullscreen ||
+                                  docElm.webkitRequestFullscreen ||
+                                  docElm.mozRequestFullScreen ||
+                                  docElm.msRequestFullscreen;
+
+        if (requestFullscreen) {
+          requestFullscreen.call(docElm).catch(() => {});
+        }
       }
     }
 
